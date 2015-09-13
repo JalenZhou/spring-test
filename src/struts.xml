@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="true" />
+	<constant name="struts.action.extension" value="do,action,,"></constant>
+	<constant name="struts.objectFactory" value="spring" />
+
+    <package name="default" namespace="/" extends="struts-default">
+        <action name="user_login" class="com.spring.action.UserAction" method = "executeLogin">
+            <result name="success">success.jsp</result>
+        	<result name="fail">fail.jsp</result>
+        </action>
+        <action name="user_register" class="com.spring.action.UserAction" method = "executeRegister">
+            <result name="addNewUser-success">success.jsp</result>
+        	<result name="addNewUser-fail">fail.jsp</result>
+        </action>
+        <action name="pro_*" class="com.action.ProductAction" method="{1}" >
+             <result name="proaddsuccess">/WEB-INF/proaddsuccess.jsp</result>
+             <result name="prodelsuccess">/WEB-INF/prodelsuccess.jsp</result>
+             <result name="proinfo">/WEB-INF/proinfo.jsp</result>
+        </action>
+        <action name="cart_*" class="com.action.CartAction" method="{1}" >
+             <result name="cartaddsuccess">/WEB-INF/cartaddsuccess.jsp</result>
+             <result name="cartlist">/WEB-INF/cartlist.jsp</result>
+        </action>
+<!--         <action name="user_findall" class="com.zhou.action.UserAction" method = "executeFindAll">
+            <result name="findAll">main_index_userManage.jsp</result>
+        </action>
+        <action name="user_addNewUser" class="com.zhou.action.UserAction" method = "executeAddNewUser">
+            <result name="addNewUser-success">main_index_success.jsp</result>
+            <result name="addNewUser-fail">main_index_fail.jsp</result>
+        </action>
+        <action name="user_delete" class="com.zhou.action.UserAction" method = "executeDelete">
+            <result name="deleteSuccess">main_index_success.jsp</result>
+        </action>
+        <action name="user_update" class="com.zhou.action.UserAction" method = "executeUpdate">
+            <result name="updateSuccess">main_index_success.jsp</result>
+        </action> -->
+      </package>
+<!--       <package name="default" namespace="/" extends="struts-default">
+        <action name="user_findall" class="com.zhou.action.UserAction" method = "executeFindAll">
+            <result name="findAll">main_index_userManage.jsp</result>
+        </action>
+      </package> -->
+      
+</struts>
